@@ -37,7 +37,14 @@ null_ls.setup({
     method = DIAGNOSTICS,
     filetypes = { "python" },
     generator_opts = {
-        command = "pylint",
+        -- command = "pylint",
+        dynamic_command = function(params)
+            if params.bufname:match("nb_") then
+                return nil
+            else
+                return "pylint"
+            end
+        end,
         to_stdin = true,
         args = { "--from-stdin", "$FILENAME", "-f", "json" },
         format = "json",
