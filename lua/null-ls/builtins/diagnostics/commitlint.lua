@@ -57,7 +57,7 @@ return h.make_builtin({
     filetypes = { "gitcommit" },
     generator_opts = {
         command = "commitlint",
-        args = { "--format", "commitlint-format-json" },
+        args = { "--format", "commitlint-format-json", "--config", vim.fn.expand "$HOME/.config/nvim/lua/plugins/data/commitlint/commitlint.config.js" },
         to_stdin = true,
         format = "json",
         check_exit_code = function(code)
